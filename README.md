@@ -10,5 +10,8 @@ This project consists of a front-end written in React.js, a back-end written in 
 - **PUT** /api/products/{id}
 - **DELETE** /api/products/{id}
 
-### Address Type (Lookup Table)
+### AddressType (Lookup Table)
 - **GET** /api/addresstypes
+
+### Category (Lookup Table)
+- **GET** /api/category/{id}
