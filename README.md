@@ -15,3 +15,4 @@ This project consists of a front-end written in React.js, a back-end written in 
 
 ### Category (Lookup Table)
 - **GET** /api/category/{id}
+- **POST** /api/products
