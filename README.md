@@ -14,5 +14,5 @@ This project consists of a front-end written in React.js, a back-end written in 
 - **GET** /api/addresstypes
 
 ### Category (Lookup Table)
+- **GET** /api/category/
 - **GET** /api/category/{id}
-- **POST** /api/products
