@@ -24,6 +24,7 @@ This project consists of a Front-End written in React.JS, a back-end written in 
 - **POST** /api/customers
 - **PUT** /api/customers/{id}
 - **DELETE** /api/customers/{id}
+
 ### Order
 GET /api/orders
 GET /api/orders/{id}
