@@ -1,5 +1,5 @@
 # Superstore
-This project consists of a Front-End written in React.JS, a back-end written in C#, and MS SQL Stored Procedures.
+This project consists of a Front-End written in React.js, a back-end written in C#, and MS SQL Stored Procedures.
 
 ## Superstore API
 
@@ -26,33 +26,33 @@ This project consists of a Front-End written in React.JS, a back-end written in 
 - **DELETE** /api/customers/{id}
 
 ### Order
-GET /api/orders
-GET /api/orders/{id}
-GET /api/orders/{id}/orderdetails
-POST /api/orders
-PUT /api/orders/{id}
-DELETE /api/orders/{id}
+- **GET** /api/orders
+- **GET** /api/orders/{id}
+- **GET** /api/orders/{id}/orderdetails
+- **POST** /api/orders
+- **PUT** /api/orders/{id}
+- **DELETE** /api/orders/{id}
 
 ### AddressType (Lookup Table)
-GET /api/addresstypes
+- **GET** /api/addresstypes
 
 ### Region (Lookup Table)
-GET /api/regions
+- **GET** /api/regions
 
 ### Segment (Lookup Table)
-GET /api/segments
+- **GET** /api/segments
 
 ### ShipMode (Lookup Table)
-GET /api/shipmodes
+- **GET** /api/shipmodes
 
 ### Category (Lookup Table)
-GET /api/categories
+- **GET** /api/categories
 
 ### Country (Lookup Table)
-GET /api/countries
+- **GET** /api/countries
 
 ### State (Lookup Table)
-GET /api/states
+- **GET** /api/states
 
 ### SubCategory (Lookup Table)
-GET /api/subcategories
+- **GET** /api/subcategories
