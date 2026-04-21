@@ -17,13 +17,13 @@ This project consists of a Front-End written in React.JS, a back-end written in 
 - DELETE /api/products/{id}
 
 ### Customer
-GET /api/customers
-GET /api/customers/{id}
-GET /api/customers/{id}/addresses
-GET /api/customers/{id}/orders
-POST /api/customers
-PUT /api/customers/{id}
-DELETE /api/customers/{id}
+- **GET** /api/customers
+- **GET** /api/customers/{id}
+- **GET** /api/customers/{id}/addresses
+- **GET** /api/customers/{id}/orders
+- **POST** /api/customers
+- **PUT** /api/customers/{id}
+- **DELETE** /api/customers/{id}
 ### Order
 GET /api/orders
 GET /api/orders/{id}
