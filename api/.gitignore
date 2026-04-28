@@ -1,2 +1,5 @@
 ## VScode test and temp
 .vscode-test/
+
+obj/*
+bin/*
