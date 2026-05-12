@@ -28,10 +28,10 @@ public class ProductsController : ControllerBase
             List<Product> products = rows.Select(MapToProduct).ToList();
             return Ok(products);
        }
-       catch
+       catch(Exception ex)
        {
             // Log the exception (not shown here)
-            return StatusCode(500, "An error occurred while processing your request.");
+            return StatusCode(500, $"An error occurred while processing your request: {ex.Message}");
        }
     }
 
@@ -40,9 +40,9 @@ public class ProductsController : ControllerBase
       ProductID = Convert.ToInt32(row["ProductID"]),
       ProductName = row["ProductName"]?.ToString() ?? string.Empty,
       CategoryID = Convert.ToInt32(row["CategoryID"]),
-      SubcategoryID = Convert.ToInt32(row["SubcategoryID"]),
+      SubcategoryID = Convert.ToInt32(row["SubCategoryID"]),
       Category = row["Category"]?.ToString() ?? string.Empty,
-      Subcategory = row["Subcategory"]?.ToString() ?? string.Empty,
+      Subcategory = row["SubCategory"]?.ToString() ?? string.Empty,
       UnitPrice = Convert.ToDecimal(row["UnitPrice"]),
       Quantity = Convert.ToInt32(row["Quantity"])
     };
