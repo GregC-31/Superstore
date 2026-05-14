@@ -17,4 +17,28 @@ public class CategoriesController : ControllerBase
     {
         _db = db;
     }
+
+    [HttpGet(Name = "GetAllCategories")]
+    public async Task<IActionResult> Get()
+    {
+    try
+       {
+            List<Dictionary<string, object?>> rows = await _db.QueryAsync("GetCategories");
+            List<Category> categories = rows.Select(MapToCategory).ToList();
+
+            return Ok(categories);
+       }
+       catch(Exception ex)
+       {
+            // Log the exception (not shown here)
+            return StatusCode(500, $"An error occurred while processing your request: {ex.Message}");
+       }
+}
+
+    private static Category MapToCategory(Dictionary<string, object?> row) => new Category
+    {
+
+      CategoryID = Convert.ToInt32(row["CategoryID"]),
+      CategoryName = Convert.ToString(row["Category"]) ?? string.Empty
+    };
 }
