@@ -23,7 +23,7 @@ public class CategoriesController : ControllerBase
     {
     try
        {
-            List<Dictionary<string, object?>> rows = await _db.QueryAsync("GetCategories");
+            List<Dictionary<string, object?>> rows = await _db.QueryAsync("GetAllCategories");
             List<Category> categories = rows.Select(MapToCategory).ToList();
 
             return Ok(categories);
