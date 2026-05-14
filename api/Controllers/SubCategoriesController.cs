@@ -31,7 +31,7 @@ public class SubCategoriesController : ControllerBase
        catch(Exception ex)
        {
             // Log the exception (not shown here)
-            return StatusCode(500, $"An error occurred while processing your request: {ex.Message}");
+            return StatusCode(500, $"An error occurred while processing your request for all sub-categories: {ex.Message}");
        }
 }
 
