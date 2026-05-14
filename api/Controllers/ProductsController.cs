@@ -34,7 +34,25 @@ public class ProductsController : ControllerBase
             return StatusCode(500, $"An error occurred while processing your request for all products: {ex.Message}");
        }
     }
-
+    
+    [HttpGet(Name = "GetProductById")]
+    public async Task<IActionResult> Get(int id)
+    {
+       try
+       {
+            var row = await _db.QuerySingleAsync("GetProduct", new SqlParameter("@ProductID", id));
+            if (row == null)
+                return NotFound();
+            
+            Product product = MapToProduct(row);
+            return Ok(product);
+       }
+       catch(Exception ex)
+       {
+            // Log the exception (not shown here)
+            return StatusCode(500, $"An error occurred while processing your request for all products: {ex.Message}");
+       }
+    }
     private static Product MapToProduct(Dictionary<string, object?> row) => new Product
     {
       ProductID = Convert.ToInt32(row["ProductID"]),
