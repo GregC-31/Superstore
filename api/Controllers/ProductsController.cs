@@ -102,6 +102,27 @@ public class ProductsController : ControllerBase
                return StatusCode(500, $"An error occurred while processing your request to update a product: {ex.Message}");
           }
        }
+
+     [HttpDelete("{id}", Name = "DeleteProduct")]
+       public async Task<IActionResult> Delete(int id, [FromQuery] bool permanent)
+       {
+          try
+          {
+               var parameters = new[]
+               {
+                    new SqlParameter("@ProductID", id),
+                    new SqlParameter("@Delete", permanent)
+               };
+               
+               await _db.ExecuteAsync("DeleteProduct", parameters);
+               return NoContent();
+          }
+          catch(Exception ex)
+          {
+               // Log the exception (not shown here)
+               return StatusCode(500, $"An error occurred while processing your request to delete a product: {ex.Message}");
+          }
+       }
     private static Product MapToProduct(Dictionary<string, object?> row) => new Product
     {
       ProductID = Convert.ToInt32(row["ProductID"]),
