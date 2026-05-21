@@ -77,6 +77,31 @@ public class ProductsController : ControllerBase
                return StatusCode(500, $"An error occurred while processing your request for all products: {ex.Message}");
           }
      }
+     
+     [HttpPut("{id}", Name = "UpdateProduct")]
+       public async Task<IActionResult> Put(int id, [FromBody] Product product)
+       {
+          try
+          {
+               var parameters = new[]
+               {
+                    new SqlParameter("@ProductID", id),
+                    new SqlParameter("@ProductName", product.ProductName),
+                    new SqlParameter("@CategoryID", product.CategoryID),
+                    new SqlParameter("@SubCategoryID", product.SubcategoryID),
+                    new SqlParameter("@UnitPrice", product.UnitPrice),
+                    new SqlParameter("@Quantity", product.Quantity)
+               };
+               
+               int newProductId = await _db.ExecuteAsync("UpdateProduct", parameters);
+               return Created();
+          }
+          catch(Exception ex)
+          {
+               // Log the exception (not shown here)
+               return StatusCode(500, $"An error occurred while processing your request to update a product: {ex.Message}");
+          }
+       }
     private static Product MapToProduct(Dictionary<string, object?> row) => new Product
     {
       ProductID = Convert.ToInt32(row["ProductID"]),
