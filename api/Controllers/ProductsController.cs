@@ -65,7 +65,7 @@ public class ProductsController : ControllerBase
                     new SqlParameter("@CategoryID", product.CategoryID),
                     new SqlParameter("@SubCategoryID", product.SubcategoryID),
                     new SqlParameter("@UnitPrice", product.UnitPrice),
-                    new SqlParameter("@Quantity", product.Quantity)
+                    new SqlParameter("@Inventory", product.Inventory)
                };
                
                int newProductId = await _db.ExecuteAsync("CreateProduct", parameters);
@@ -90,7 +90,7 @@ public class ProductsController : ControllerBase
                     new SqlParameter("@CategoryID", product.CategoryID),
                     new SqlParameter("@SubCategoryID", product.SubcategoryID),
                     new SqlParameter("@UnitPrice", product.UnitPrice),
-                    new SqlParameter("@Quantity", product.Quantity)
+                    new SqlParameter("@Inventory", product.Inventory)
                };
                
                int newProductId = await _db.ExecuteAsync("UpdateProduct", parameters);
@@ -132,6 +132,6 @@ public class ProductsController : ControllerBase
       Category = row["Category"]?.ToString() ?? string.Empty,
       Subcategory = row["SubCategory"]?.ToString() ?? string.Empty,
       UnitPrice = Convert.ToDecimal(row["UnitPrice"]),
-      Quantity = Convert.ToInt32(row["Quantity"])
+      Inventory = Convert.ToInt32(row["Inventory"])
     };
 }
