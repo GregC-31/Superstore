@@ -12,7 +12,6 @@ namespace api.Controllers;
 public class ProductsController : ControllerBase
 {
     private readonly IDatabaseService _db;
-
     public ProductsController(IDatabaseService db)
     {
         _db = db;
@@ -35,7 +34,7 @@ public class ProductsController : ControllerBase
        }
     }
     
-    [HttpGet(Name = "GetProductById")]
+    [HttpGet("{id}", Name = "GetProductById")]
     public async Task<IActionResult> Get(int id)
     {
        try
@@ -68,8 +67,14 @@ public class ProductsController : ControllerBase
                     new SqlParameter("@Inventory", product.Inventory)
                };
                
-               int newProductId = await _db.ExecuteAsync("CreateProduct", parameters);
-               return Created();
+               var row = await _db.QuerySingleAsync("CreateProduct", parameters);
+
+               if (row == null)
+                    return StatusCode(500, "Failed to create product.");
+
+
+               Product createdProduct = MapToProduct(row);
+               return CreatedAtRoute("GetProductById", new { id = createdProduct.ProductID }, createdProduct);
           }
           catch(Exception ex)
           {
